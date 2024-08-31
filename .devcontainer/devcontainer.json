@@ -1,0 +1,64 @@
+// Developing inside a Container https://code.visualstudio.com/docs/devcontainers/containers
+// Create a Dev Container https://code.visualstudio.com/docs/devcontainers/create-dev-container
+// Available Dev Container Templates https://containers.dev/templates
+{
+    // Develop Node.js based applications in TypeScript. Includes Node.js, eslint, nvm, yarn, and the TypeScript compiler.
+    // For format details, see https://aka.ms/devcontainer.json. For config options, see the
+    // Image: https://github.com/devcontainers/images/tree/main/src/typescript-node
+    // Readme: https://github.com/devcontainers/templates/tree/main/src/typescript-node and
+    // Template: https://github.com/devcontainers/templates/blob/main/src/typescript-node/devcontainer-template.json
+
+    "name": "Node.js & TypeScript",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:1-18-bookworm",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers-contrib/features/quasar-cli:2": {}
+    },
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    //"forwardPorts": [],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    //"postCreateCommand": "yarn install",
+    //"postCreateCommand": "npm install",
+
+    // Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "editor.bracketPairColorization.enabled": true,
+                "editor.guides.bracketPairs": true,
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.codeActionsOnSave": ["source.fixAll.eslint"],
+                "eslint.validate": [
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "vue"
+                ],
+                "typescript.tsdk": "node_modules/typescript/lib",
+                "editor.detectIndentation": true,
+                "editor.insertSpaces": false,
+                "editor.tabSize": 4,
+                "editor.foldingStrategy": "indentation",
+                "editor.defaultFoldingRangeProvider": null
+            },
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "editorconfig.editorconfig",
+                "vue.volar",
+                "wayou.vscode-todo-highlight"
+            ]
+        }
+    }
+
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
+}
